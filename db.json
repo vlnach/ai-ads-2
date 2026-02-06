@@ -1,0 +1,82 @@
+{
+  "ads": [
+    {
+      "id": "ad-101",
+      "title": "Product teaser reel",
+      "platform": "Instagram",
+      "url": "https://instagram.com/p/teaser",
+      "reach": 18240,
+      "clicks": 1840,
+      "ctr": 10.1,
+      "conversions": 235,
+      "status": "active",
+      "sentiment": "hot",
+      "createdAt": "2026-01-08"
+    },
+    {
+      "id": "ad-102",
+      "title": "Founder story clip",
+      "platform": "TikTok",
+      "url": "https://tiktok.com/@brand/founder-story",
+      "reach": 12480,
+      "clicks": 620,
+      "ctr": 5,
+      "conversions": 94,
+      "status": "active",
+      "sentiment": "steady",
+      "createdAt": "2026-01-10"
+    },
+    {
+      "id": "ad-103",
+      "title": "Case study carousel",
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/posts/case-study",
+      "reach": 7320,
+      "clicks": 210,
+      "ctr": 2.9,
+      "conversions": 41,
+      "status": "active",
+      "sentiment": "cool",
+      "createdAt": "2026-01-05"
+    },
+    {
+      "id": "ad-104",
+      "title": "How-to thread",
+      "platform": "X",
+      "url": "https://x.com/brand/status/123",
+      "reach": 5180,
+      "clicks": 164,
+      "ctr": 3.2,
+      "conversions": 32,
+      "status": "paused",
+      "sentiment": "cool",
+      "createdAt": "2026-01-03"
+    },
+    {
+      "id": "ad-86d06315-eab4-49f2-ab6c-4b492b148b13",
+      "title": "Launch spotlight",
+      "platform": "Instagram",
+      "url": "https://instagram.com/p/new-launch",
+      "reach": 6526,
+      "clicks": 263,
+      "ctr": 4,
+      "conversions": 29,
+      "status": "active",
+      "sentiment": "steady",
+      "createdAt": "2026-01-19"
+    },
+    {
+      "id": "ad-ad237160-e716-4a05-900c-115fea9ba402",
+      "title": "link",
+      "platform": "Instagram",
+      "url": "https://www.linkedin.com/in/vlnach",
+      "reach": 6227,
+      "clicks": 359,
+      "ctr": 5.8,
+      "conversions": 48,
+      "status": "active",
+      "sentiment": "hot",
+      "createdAt": "2026-02-06"
+    }
+  ]
+}
