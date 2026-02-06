@@ -1,4 +1,4 @@
-import type { ChangeEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import type { NewLinkPayload, Platform } from "../types";
 
 export type CreateLinkPageProps = {
@@ -40,8 +40,37 @@ export function CreateLinkPage({
   onSubmit,
   onBackToAds,
 }: CreateLinkPageProps) {
+  const [showUrlError, setShowUrlError] = useState(false);
+  const urlTimerRef = useRef<ReturnType<typeof window.setTimeout> | null>(null);
+
+  const clearUrlTimer = () => {
+    if (urlTimerRef.current) window.clearTimeout(urlTimerRef.current);
+    urlTimerRef.current = null;
+  };
+
+  const armUrlTimer = () => {
+    clearUrlTimer();
+    urlTimerRef.current = window.setTimeout(() => {
+      setShowUrlError(true);
+    }, 3000);
+  };
+
+  useEffect(() => clearUrlTimer, []);
+
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange({ [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+
+    if (name === "url") {
+      setShowUrlError(false);
+      armUrlTimer();
+    }
+
+    onChange({ [name]: value });
+  };
+
+  const handleUrlBlur = () => {
+    clearUrlTimer();
+    setShowUrlError(true);
   };
 
   const handlePlatform = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -63,7 +92,10 @@ export function CreateLinkPage({
     !!newLink.title.trim() && !!newLink.url.trim() && !invalidUrl && !mismatch;
 
   const handleSubmit = () => {
-    if (!canSubmit) return;
+    if (!canSubmit) {
+      setShowUrlError(true);
+      return;
+    }
     onSubmit();
   };
 
@@ -110,12 +142,17 @@ export function CreateLinkPage({
               value={newLink.url}
               onChange={handleInput}
               placeholder="https://..."
+              onBlur={handleUrlBlur}
             />
           </label>
         </div>
-        {mismatch && (
+        {showUrlError && invalidUrl && (
+          <div className="note note-error">URL incorrect</div>
+        )}
+
+        {showUrlError && mismatch && (
           <div className="note note-error">
-            URL domain <b>{host}</b> do not match with platform{" "}
+            URL domain <b>{host}</b> does not match with platform{" "}
             <b>{newLink.platform}</b>
           </div>
         )}
